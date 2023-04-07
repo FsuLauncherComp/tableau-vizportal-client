@@ -1,0 +1,7 @@
+/test
+/env
+/.vscode
+**/__pycache__
+config.py 
+testing.py 
+.DS_Store
