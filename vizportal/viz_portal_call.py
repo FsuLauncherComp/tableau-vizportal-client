@@ -43,7 +43,7 @@ class VizPortalCall:
         headers["cookie"] = f"workgroup_session_id={self.server.auth_token}; XSRF-TOKEN="
         return headers
     
-    def _payload_builder(self, payload: PayloadBuilder | Dict):
+    def _payload_builder(self, payload):
         """Checks if the payload is a PayloadBuilder object and builds it if it is.
         else creates a PayloadBuilder object from the dict and returns the payload."""
         if isinstance(payload, PayloadBuilder):
@@ -54,7 +54,7 @@ class VizPortalCall:
         else:
             raise Exception("Payload must be a PayloadBuilder or a Dict.")
     
-    def make_request(self, payload: PayloadBuilder | Dict) -> Dict:
+    def make_request(self, payload) -> Dict:
         """Makes a call to the vizportal API"""
         logging.debug(f"Sending request to {self.server.server_address}")
         payload = self._payload_builder(payload)
@@ -72,3 +72,4 @@ class VizPortalCall:
             raise Exception(f"Response: {response.text}")
 
         return response.json()
+
