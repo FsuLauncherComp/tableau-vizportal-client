@@ -1,118 +1,142 @@
+from typing import Literal
+
+
 class Endpoints:
     """Endpoints for the Vizportal API"""
 
     class Get:
         """Endpoints for GET requests"""
 
-        Workbooks = "getWorkbooks"
-        Workbook = "getWorkbook"
-        Datasource = "getDatasource"
-        Datasources = "getDatasources"
-        Projects = "getProjects"
-        User = "getUser"
-        Users = "getUsers"
-        Group = "getGroup"
-        Groups = "getGroups"
-        View  = "getView"
-        Views = "getViews"
-        Favorites = "getFavorites"
-        Flow = "getFlow"
-        Flows = "getFlows"
-        Metrics = "getMetrics"
-        Schedule = "getSchedule"
-        Schedules = "getSchedules"
-        Lenses = "getLenses"
-        Subscriptions = "getSubscriptions"
-        DataRoles = "getDataRoles"
-        DetailedRecents = "getDetailedRecents"
-        Recommendations = "getRecommendations"
-        DataConnections = "getDataConnections"
-        BackgroundJobs = "getBackgroundJobs"
-        ContentForUser = "getContentForUser"
-        PersonalAccessTokenNames = "getPersonalAccessTokenNames"
-        SiteUsers = "getSiteUsers"
-        UsersGroupMembership = "getUsersGroupMembership"
-        Sites = "getSites"
-        Site = "getSite"
-        Task = "getTask"
-        Tasks = "getTasks"
-        Webhook = "getWebhook"
-        Webhooks = "getWebhooks"
-        Alert = "getAlert"
-        Alerts = "getAlerts"
-        ViewByPath = "getViewByPath"
-        ViewActions = "getViewActions"
-        UsersGroupMembership = "getUsersGroupMembership"
-        Tags = "getTags"
-        ExplicitPermissions = "getExplicitPermissions"
-        UserSettings = "getUserSettings"
-        SiteSettings = "getSiteSettings"
-        ServerSettings = "getServerSettings"
-        ServerInfo = "getServerInfo"
-        ServerVersion = "getServerVersion"
-        ServerStatus = "getServerStatus"
-        ProjectActions = "getProjectActions"
-        Project = "getProject"
-        ProjectNames = "getProjectNames"
-        ProjectPermissions = "getProjectPermissions"
-        LastActiveDirectoryGroupSyncTime = "getLastActiveDirectoryGroupSyncTime"
-        Comments = "getComments"
-
-
+        Workbooks: Literal["getWorkbooks"] = "getWorkbooks"
+        Workbook: Literal["getWorkbook"] = "getWorkbook"
+        Datasource: Literal["getDatasource"] = "getDatasource"
+        Datasources: Literal["getDatasources"] = "getDatasources"
+        Projects: Literal["getProjects"] = "getProjects"
+        User: Literal["getUser"] = "getUser"
+        Users: Literal["getUsers"] = "getUsers"
+        Group: Literal["getGroup"] = "getGroup"
+        Groups: Literal["getGroups"] = "getGroups"
+        View: Literal["getView"] = "getView"
+        Views: Literal["getViews"] = "getViews"
+        Favorites: Literal["getFavorites"] = "getFavorites"
+        Flow: Literal["getFlow"] = "getFlow"
+        Flows: Literal["getFlows"] = "getFlows"
+        Metrics: Literal["getMetrics"] = "getMetrics"
+        Schedule: Literal["getSchedule"] = "getSchedule"
+        Schedules: Literal["getSchedules"] = "getSchedules"
+        Lenses: Literal["getLenses"] = "getLenses"
+        Subscriptions: Literal["getSubscriptions"] = "getSubscriptions"
+        DataRoles: Literal["getDataRoles"] = "getDataRoles"
+        DetailedRecents: Literal["getDetailedRecents"] = "getDetailedRecents"
+        Recommendations: Literal["getRecommendations"] = "getRecommendations"
+        DataConnections: Literal["getDataConnections"] = "getDataConnections"
+        BackgroundJobs: Literal["getBackgroundJobs"] = "getBackgroundJobs"
+        ContentForUser: Literal["getContentForUser"] = "getContentForUser"
+        PersonalAccessTokenNames: Literal["getPersonalAccessTokenNames"] = (
+            "getPersonalAccessTokenNames"
+        )
+        SiteUsers: Literal["getSiteUsers"] = "getSiteUsers"
+        UsersGroupMembership: Literal["getUsersGroupMembership"] = (
+            "getUsersGroupMembership"
+        )
+        Sites: Literal["getSites"] = "getSites"
+        Site: Literal["getSite"] = "getSite"
+        Task: Literal["getTask"] = "getTask"
+        Tasks: Literal["getTasks"] = "getTasks"
+        Webhook: Literal["getWebhook"] = "getWebhook"
+        Webhooks: Literal["getWebhooks"] = "getWebhooks"
+        Alert: Literal["getAlert"] = "getAlert"
+        Alerts: Literal["getAlerts"] = "getAlerts"
+        ViewByPath: Literal["getViewByPath"] = "getViewByPath"
+        ViewActions: Literal["getViewActions"] = "getViewActions"
+        UsersGroupMembership: Literal["getUsersGroupMembership"] = (
+            "getUsersGroupMembership"
+        )
+        Tags: Literal["getTags"] = "getTags"
+        ExplicitPermissions: Literal["getExplicitPermissions"] = (
+            "getExplicitPermissions"
+        )
+        UserSettings: Literal["getUserSettings"] = "getUserSettings"
+        SiteSettings: Literal["getSiteSettings"] = "getSiteSettings"
+        ServerSettings: Literal["getServerSettings"] = "getServerSettings"
+        ServerInfo: Literal["getServerInfo"] = "getServerInfo"
+        ServerVersion: Literal["getServerVersion"] = "getServerVersion"
+        ServerStatus: Literal["getServerStatus"] = "getServerStatus"
+        ProjectActions: Literal["getProjectActions"] = "getProjectActions"
+        Project: Literal["getProject"] = "getProject"
+        ProjectNames: Literal["getProjectNames"] = "getProjectNames"
+        ProjectPermissions: Literal["getProjectPermissions"] = "getProjectPermissions"
+        LastActiveDirectoryGroupSyncTime: Literal[
+            "getLastActiveDirectoryGroupSyncTime"
+        ] = "getLastActiveDirectoryGroupSyncTime"
+        Comments: Literal["getComments"] = "getComments"
 
     class Update:
         """Endpoints for UPDATE requests"""
 
-        Workbook = "updateWorkbook"
-        Datasource = "updateDatasource"
-        Project = "updateProject"
-        Group = "updateGroup"
-        User = "updateUser"
-        Site = "updateSite"
-        Flow = "updateFlow"
-        UserStartPage = "updateUserStartPage"
-        UserGroupMembership = "updateUserGroupMembership"
-        UsersSiteRole = "updateUsersSiteRole"
-        UserEmail = "updateUserEmail"
-        ProjectDescription = "updateProjectDescription"
-        ProjectOwner = "updateProjectOwner"
-        ProjectParent = "updateProjectParent"
-        ProjectTags = "updateProjectTags"
-        ProjectPermissions = "updateProjectPermissions"
-        Connections = "updateConnections"
-
+        Workbook: Literal["updateWorkbook"] = "updateWorkbook"
+        Datasource: Literal["updateDatasource"] = "updateDatasource"
+        Project: Literal["updateProject"] = "updateProject"
+        Group: Literal["updateGroup"] = "updateGroup"
+        User: Literal["updateUser"] = "updateUser"
+        Site: Literal["updateSite"] = "updateSite"
+        Flow: Literal["updateFlow"] = "updateFlow"
+        UserStartPage: Literal["updateUserStartPage"] = "updateUserStartPage"
+        UserGroupMembership: Literal["updateUserGroupMembership"] = (
+            "updateUserGroupMembership"
+        )
+        UsersSiteRole: Literal["updateUsersSiteRole"] = "updateUsersSiteRole"
+        UserEmail: Literal["updateUserEmail"] = "updateUserEmail"
+        ProjectDescription: Literal["updateProjectDescription"] = (
+            "updateProjectDescription"
+        )
+        ProjectOwner: Literal["updateProjectOwner"] = "updateProjectOwner"
+        ProjectParent: Literal["updateProjectParent"] = "updateProjectParent"
+        ProjectTags: Literal["updateProjectTags"] = "updateProjectTags"
+        ProjectPermissions: Literal["updateProjectPermissions"] = (
+            "updateProjectPermissions"
+        )
+        Connections: Literal["updateConnections"] = "updateConnections"
 
     class Create:
         """Endpoints for CREATE requests"""
 
-        CreateProject = "createProject"
-        CreateGroup = "createGroup"
-        CreateUser = "createUser"
-        PublishWorkbook = "publishWorkbook"
-        PublishDatasource = "publishDatasource"
-        PublishFlow = "publishFlow"
-        PublicKey = "generatePublicKey"
-        Commonet = "createComment"
+        CreateProject: Literal["createProject"] = "createProject"
+        CreateGroup: Literal["createGroup"] = "createGroup"
+        CreateUser: Literal["createUser"] = "createUser"
+        PublishWorkbook: Literal["publishWorkbook"] = "publishWorkbook"
+        PublishDatasource: Literal["publishDatasource"] = "publishDatasource"
+        PublishFlow: Literal["publishFlow"] = "publishFlow"
+        PublicKey: Literal["generatePublicKey"] = "generatePublicKey"
+        Commonet: Literal["createComment"] = "createComment"
 
     class Delete:
         """Endpoints for DELETE requests"""
 
-        WorkbookVersions = "deleteWorkbookVersions"
-        UserRefreshTokens = "deleteUserRefreshTokens"
-        TagsFromWorkbooks = "removeTagsFromWorkbooks"
-        Comment = "deleteComment"
+        WorkbookVersions: Literal["deleteWorkbookVersions"] = "deleteWorkbookVersions"
+        UserRefreshTokens: Literal["deleteUserRefreshTokens"] = (
+            "deleteUserRefreshTokens"
+        )
+        TagsFromWorkbooks: Literal["removeTagsFromWorkbooks"] = (
+            "removeTagsFromWorkbooks"
+        )
+        Comment: Literal["deleteComment"] = "deleteComment"
 
     class Move:
         """Endpoints for MOVE requests"""
 
-        MoveWorkbooksToProject = "moveWorkbooksToProject"
+        MoveWorkbooksToProject: Literal["moveWorkbooksToProject"] = (
+            "moveWorkbooksToProject"
+        )
 
     class Set:
         """Endpoints for SET requests"""
 
-        WorkbooksOwner = "setWorkbooksOwner"
-        WorkbookDescription = "setWorkbookDescription"
-        DisplayTabs = "setDisplayTabs"
+        WorkbooksOwner: Literal["setWorkbooksOwner"] = "setWorkbooksOwner"
+        WorkbookDescription: Literal["setWorkbookDescription"] = (
+            "setWorkbookDescription"
+        )
+        DisplayTabs: Literal["setDisplayTabs"] = "setDisplayTabs"
 
     class Others:
-        CheckConnection = "checkConnection"        
+        CheckConnection: Literal["checkConnection"] = "checkConnection"

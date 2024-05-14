@@ -1,8 +1,7 @@
 from vizportal.viz_portal_call import VizPortalCall
 from vizportal.payload import PayloadBuilder
 from tableauserverclient import Server
-from typing import Dict
-from collections.abc import Iterator
+from typing import Dict, Iterator, Optional
 
 
 class VizportalPager(VizPortalCall):
@@ -15,7 +14,7 @@ class VizportalPager(VizPortalCall):
     ----------
         server (Server): The Tableau Server object.
         payload (PayloadBuilder | Dict): The payload for the request.
-        max_pages (int): The maximum number of pages to return.
+        max_pages (Optional[int]): The maximum number of pages to return.
 
     Methods
     -------
@@ -23,13 +22,15 @@ class VizportalPager(VizPortalCall):
             Returns an iterator for the class.
     """
 
-    def __init__(self, server: Server, payload, max_pages):
+    def __init__(
+        self, server: Server, payload: PayloadBuilder | Dict, max_pages: Optional[int]
+    ):
         super().__init__(server)
         self.payload = self._payload_builder(payload)
         self.max_pages = max_pages
-        self._start_index = None
-        self._max_items = None
-        self._pages_returned = None
+        self._start_index: Optional[int] = None
+        self._max_items: Optional[int] = None
+        self._pages_returned: Optional[int] = None
 
     def __iter__(self) -> Iterator[Dict]:
         response = self._get_response()
@@ -40,7 +41,7 @@ class VizportalPager(VizPortalCall):
         # Ensure we don't get stuck in an infinite loop
         if self.max_items == 0:
             return
-        
+
         while response.get("result", {}).get("moreItems"):
             if self.max_pages is not None and self._pages_returned >= self.max_pages:
                 break

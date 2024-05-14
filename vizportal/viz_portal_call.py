@@ -1,16 +1,15 @@
 import requests
 import json
 import logging
-from typing import Dict
+from typing import Dict, Union
 from tableauserverclient import Server
-
 from vizportal.payload import PayloadBuilder
 
-CACHE_CONTROL = "no-cache"
-ACCEPT = "application/json, text/plain, */*"
-X_XSRF_TOKEN = ""
-CONTENT_TYPE = "application/json;charset=UTF-8"
-REQUEST_METHOD = "POST"
+CACHE_CONTROL: str = "no-cache"
+ACCEPT: str = "application/json, text/plain, */*"
+X_XSRF_TOKEN: str = ""
+CONTENT_TYPE: str = "application/json;charset=UTF-8"
+REQUEST_METHOD: str = "POST"
 
 
 class VizPortalCall:
@@ -25,7 +24,7 @@ class VizPortalCall:
 
     Methods
     -------
-    call(payload: Dict) -> Dict
+    call(payload: Dict[str, Union[str, Dict[str, Union[str, int]]]]) -> Dict[str, Union[str, int]]
         Makes a call to the vizportal API.
     """
 
@@ -33,9 +32,9 @@ class VizPortalCall:
         # Assign the server object to the object's server attribute
         self.server: Server = server
 
-    def _make_common_headers(self) -> Dict:
+    def _make_common_headers(self) -> Dict[str, str]:
         """Makes the common headers for the request"""
-        headers = {}
+        headers: Dict[str, str] = {}
         headers["cache-control"] = CACHE_CONTROL
         headers["accept"] = ACCEPT
         headers["x-xsrf-token"] = X_XSRF_TOKEN
@@ -43,7 +42,7 @@ class VizPortalCall:
         headers["cookie"] = f"workgroup_session_id={self.server.auth_token}; XSRF-TOKEN="
         return headers
     
-    def _payload_builder(self, payload):
+    def _payload_builder(self, payload: Union[PayloadBuilder, Dict[str, Union[str, int]]]) -> Dict[str, Union[str, int]]:
         """Checks if the payload is a PayloadBuilder object and builds it if it is.
         else creates a PayloadBuilder object from the dict and returns the payload."""
         if isinstance(payload, PayloadBuilder):
@@ -54,7 +53,7 @@ class VizPortalCall:
         else:
             raise Exception("Payload must be a PayloadBuilder or a Dict.")
     
-    def make_request(self, payload) -> Dict:
+    def make_request(self, payload: Union[PayloadBuilder, Dict[str, Union[str, int]]]) -> Dict[str, Union[str, int]]:
         """Makes a call to the vizportal API"""
         logging.debug(f"Sending request to {self.server.server_address}")
         payload = self._payload_builder(payload)
@@ -72,4 +71,3 @@ class VizPortalCall:
             raise Exception(f"Response: {response.text}")
 
         return response.json()
-
