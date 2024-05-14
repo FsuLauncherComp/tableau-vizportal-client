@@ -1,7 +1,7 @@
 from vizportal.viz_portal_call import VizPortalCall
 from vizportal.payload import PayloadBuilder
 from tableauserverclient import Server
-from typing import Dict, Iterator, Optional
+from typing import Dict, Iterator, Optional, Union
 
 
 class VizportalPager(VizPortalCall):
@@ -13,7 +13,7 @@ class VizportalPager(VizPortalCall):
     Attributes
     ----------
         server (Server): The Tableau Server object.
-        payload (PayloadBuilder | Dict): The payload for the request.
+        payload (Union[PayloadBuilder, Dict]): The payload for the request.
         max_pages (Optional[int]): The maximum number of pages to return.
 
     Methods
@@ -23,7 +23,10 @@ class VizportalPager(VizPortalCall):
     """
 
     def __init__(
-        self, server: Server, payload: PayloadBuilder | Dict, max_pages: Optional[int]
+        self,
+        server: Server,
+        payload: Union[PayloadBuilder, Dict],
+        max_pages: Optional[int],
     ):
         super().__init__(server)
         self.payload = self._payload_builder(payload)
