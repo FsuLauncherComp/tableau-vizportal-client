@@ -23,9 +23,7 @@ class VizportalPager(VizPortalCall):
             Returns an iterator for the class.
     """
 
-    def __init__(
-        self, server: Server, payload: PayloadBuilder | Dict, max_pages: int = None
-    ):
+    def __init__(self, server: Server, payload, max_pages):
         super().__init__(server)
         self.payload = self._payload_builder(payload)
         self.max_pages = max_pages
