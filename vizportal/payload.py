@@ -1,5 +1,6 @@
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 from vizportal.req_options import FilterClauseBuilder, SortBuilder
+
 
 class PayloadBuilder:
     """Builds a payload for a request to the Vizportal API.
@@ -8,12 +9,12 @@ class PayloadBuilder:
 
     Attributes
     ----------
-    _payload : Dict
+    _payload : Dict[str, Union[str, Dict[str, Union[int, Dict[str, int]], List[str]]]]
         Protected internal instance of the payload.
 
     Properties
     ----------
-    payload : Dict
+    payload : Dict[str, Union[str, Dict[str, Union[int, Dict[str, int]], List[str]]]]
         The payload to be sent to the server.
 
     Methods
@@ -30,14 +31,20 @@ class PayloadBuilder:
         Adds stat fields to the payload.
     """
 
-    def __init__(self, dict_payload: Optional[Dict[str, str]] = None):
-        self._payload = self._compose_payload_from_dict(dict_payload)
+    def __init__(
+        self, dict_payload: Optional[Dict[str, Union[str, Dict[str, str]]]] = None
+    ):
+        self._payload: Dict[
+            str, Union[str, Dict[str, Union[int, Dict[str, int]], List[str]]]
+        ] = self._compose_payload_from_dict(dict_payload)
 
     def __repr__(self) -> str:
         return f"Payload: {self.payload}"
 
     @property
-    def payload(self) -> Dict[str, str]:
+    def payload(
+        self,
+    ) -> Dict[str, Union[str, Dict[str, Union[int, Dict[str, int]], List[str]]]]:
         if not self._payload["method"]:
             raise ValueError("No method specified for payload.")
 
@@ -46,7 +53,9 @@ class PayloadBuilder:
 
         return self._payload
 
-    def _compose_payload_from_dict(self, dict_payload: Optional[Dict[str, str]]) -> Dict[str, str]:
+    def _compose_payload_from_dict(
+        self, dict_payload: Optional[Dict[str, Union[str, Dict[str, str]]]]
+    ) -> Dict[str, Union[str, Dict[str, Union[int, Dict[str, int]], List[str]]]]:
         "Composes a payload from a dictionary if it is passed in explicitly"
         if isinstance(dict_payload, dict) and dict_payload:
             return dict_payload
@@ -67,7 +76,9 @@ class PayloadBuilder:
 
     def add_page(self, start_index: int = 0, max_items: int = 100):
         if start_index < 0 or max_items < 0:
-            raise ValueError("Start index and max items must be greater than or equal to 0.")
+            raise ValueError(
+                "Start index and max items must be greater than or equal to 0."
+            )
         self._payload["params"]["page"] = {
             "startIndex": start_index,
             "maxItems": max_items,
