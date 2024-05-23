@@ -59,6 +59,9 @@ class Endpoints:
         UserSettings: Literal["getUserSettings"] = "getUserSettings"
         SiteSettings: Literal["getSiteSettings"] = "getSiteSettings"
         ServerSettings: Literal["getServerSettings"] = "getServerSettings"
+        ServerSettingsUnauthenticated: Literal["getServerSettingsUnauthenticated"] = (
+            "getServerSettingsUnauthenticated"
+        )
         ServerInfo: Literal["getServerInfo"] = "getServerInfo"
         ServerVersion: Literal["getServerVersion"] = "getServerVersion"
         ServerStatus: Literal["getServerStatus"] = "getServerStatus"
@@ -70,6 +73,37 @@ class Endpoints:
             "getLastActiveDirectoryGroupSyncTime"
         ] = "getLastActiveDirectoryGroupSyncTime"
         Comments: Literal["getComments"] = "getComments"
+        SessionInfo: Literal["getSessionInfo"] = "getSessionInfo"
+        SharedWithMe: Literal["getSharedWithMe"] = "getSharedWithMe"
+        CustomizedViews: Literal["getCustomizedViews"] = "getCustomizedViews"
+        AccelerationRecommendations: Literal["getAccelerationRecommendations"] = (
+            "getAccelerationRecommendations"
+        )
+        NotificationEnabledSettingsForUser: Literal[
+            "getNotificationEnabledSettingsForUser"
+        ] = "getNotificationEnabledSettingsForUser"
+        MarkAnimationEnabledSetting: Literal["getMarkAnimationEnabledSetting"] = (
+            "getMarkAnimationEnabledSetting"
+        )
+        Languages: Literal["getLanguages"] = "getLanguages"
+        Locales: Literal["getLocales"] = "getLocales"
+        UserSelectableTimeZones: Literal["getUserSelectableTimeZones"] = (
+            "getUserSelectableTimeZones"
+        )
+        UserRefreshTokenCount: Literal["getUserRefreshTokenCount"] = (
+            "getUserRefreshTokenCount"
+        )
+        LocalAuthenticationConfiguration: Literal[
+            "getLocalAuthenticationConfiguration"
+        ] = "getLocalAuthenticationConfiguration"
+        Databases: Literal["getDatabases"] = "getDatabases"
+        Tables: Literal["getTables"] = "getTables"
+
+
+    class Explore:
+        FavoriteContentForUser: Literal["favoriteContentForUser"] = (
+            "exploreFavoriteContentForUser"
+        )
 
     class Update:
         """Endpoints for UPDATE requests"""
@@ -97,6 +131,7 @@ class Endpoints:
             "updateProjectPermissions"
         )
         Connections: Literal["updateConnections"] = "updateConnections"
+        UserLanguage: Literal["updateUserLanguage"] = "updateUserLanguage"
 
     class Create:
         """Endpoints for CREATE requests"""
@@ -109,6 +144,15 @@ class Endpoints:
         PublishFlow: Literal["publishFlow"] = "publishFlow"
         PublicKey: Literal["generatePublicKey"] = "generatePublicKey"
         Commonet: Literal["createComment"] = "createComment"
+        ExtractTasks: Literal["createExtractTasks"] = "createExtractTasks"
+
+    class Add:
+        """Endpoints for ADD requests"""
+
+        Favorite: Literal["addFavorite"] = "addFavorite"
+        TagsToDatasources: Literal["addTagsToDatasources"] = "addTagsToDatasources"
+        TagsToViews: Literal["addTagsToViews"] = "addTagsToViews"
+        TagsToWorkbooks: Literal["addTagsToWorkbooks"] = "addTagsToWorkbooks"
 
     class Delete:
         """Endpoints for DELETE requests"""
@@ -137,6 +181,16 @@ class Endpoints:
             "setWorkbookDescription"
         )
         DisplayTabs: Literal["setDisplayTabs"] = "setDisplayTabs"
+        ExtractTaskPriority: Literal["setExtractTaskPriority"] = (
+            "setExtractTaskPriority"
+        )
+        ExtractTasksSchedule: Literal["setExtractTasksSchedule"] = (
+            "setExtractTasksSchedule"
+        )
 
-    class Others:
+    class Check:
+        PersonalAccessTokenCreationIsAllowed: Literal[
+            "checkPersonalAccessTokenCreationIsAllowed"
+        ] = "checkPersonalAccessTokenCreationIsAllowed"
+
         CheckConnection: Literal["checkConnection"] = "checkConnection"
