@@ -1,11 +1,22 @@
-import setuptools
+from setuptools import setup, find_packages
 
-setuptools.setup(
-    name="tableau-vizportal-client",
-    version="0.0.1",
-    author="Rody Zakovich",
-    description="Helper package for the Tableau Vizportal API",
-    url="https://github.com/FsuLauncherComp/tableau-vizportal-client",
-    packages=setuptools.find_packages(),
-    zip_safe=False,
+setup(
+    name='tableau-vizportal-client',
+    version='1.0.2',
+    description='A helper addon for TableauServerClient to simplify making API calls to the Tableau Vizportal API',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    author='Rody Zakovich',
+    author_email='rodyzakovich@gmail.com',
+    url='https://github.com/FsuLauncherComp/tableau-vizportal-client',
+    packages=find_packages(),
+    install_requires=[
+        'tableauserverclient>=0.11'
+    ],
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ],
+    python_requires='>=3.6',
 )
