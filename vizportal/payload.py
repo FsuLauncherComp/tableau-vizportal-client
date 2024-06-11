@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Optional, Any
 from vizportal.req_options import FilterClauseBuilder, SortBuilder
 
 
@@ -32,11 +32,9 @@ class PayloadBuilder:
     """
 
     def __init__(
-        self, dict_payload: Optional[Dict[str, Union[str, Dict[str, str]]]] = None
+        self, dict_payload: Optional[Dict[str, Any]] = None
     ):
-        self._payload: Dict[
-            str, Union[str, Dict[str, Union[int, Dict[str, int]], List[str]]]
-        ] = self._compose_payload_from_dict(dict_payload)
+        self._payload: Dict[str, Any] = self._compose_payload_from_dict(dict_payload)
 
     def __repr__(self) -> str:
         return f"Payload: {self.payload}"
@@ -44,7 +42,7 @@ class PayloadBuilder:
     @property
     def payload(
         self,
-    ) -> Dict[str, Union[str, Dict[str, Union[int, Dict[str, int]], List[str]]]]:
+    ) -> Dict[str, Any]:
         if not self._payload["method"]:
             raise ValueError("No method specified for payload.")
 
@@ -54,8 +52,8 @@ class PayloadBuilder:
         return self._payload
 
     def _compose_payload_from_dict(
-        self, dict_payload: Optional[Dict[str, Union[str, Dict[str, str]]]]
-    ) -> Dict[str, Union[str, Dict[str, Union[int, Dict[str, int]], List[str]]]]:
+        self, dict_payload: Dict[str, Any]
+    ) -> Dict[str, Any]:
         "Composes a payload from a dictionary if it is passed in explicitly"
         if isinstance(dict_payload, dict) and dict_payload:
             return dict_payload
