@@ -68,11 +68,6 @@ class VizportalRequestOptions:
         SubscriptionsTotal: str = "subscriptionsTotal"
         ConnectedWorkbooksCount: str = "connectedWorkbooksCount"
 
-    class DatasourceType:
-        Extract: str = "extract"
-        Live: str = "live"
-        LiveConnection: str = "liveConnection"
-
     class ContentType:
         Workbook: str = "workbook"
         Datasource: str = "datasource"
