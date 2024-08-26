@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='tableau-vizportal-client',
-    version='1.0.6',
+    version='1.0.7',
     description='A helper addon for TableauServerClient to simplify making API calls to the Tableau Vizportal API',
     author='Rody Zakovich',
     author_email='rodyzakovich@gmail.com',
