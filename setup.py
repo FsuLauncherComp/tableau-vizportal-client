@@ -2,9 +2,9 @@ from setuptools import setup, find_packages
 
 setup(
     name='tableau-vizportal-client',
-    version='1.0.5',
+    version='1.0.6',
     description='A helper addon for TableauServerClient to simplify making API calls to the Tableau Vizportal API',
-    long_description=open('README.md').read(),
+    long_description=open('readme.md').read(),
     long_description_content_type='text/markdown',
     author='Rody Zakovich',
     author_email='rodyzakovich@gmail.com',
