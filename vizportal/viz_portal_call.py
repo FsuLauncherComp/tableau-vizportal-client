@@ -1,13 +1,13 @@
 import requests
 import json
 import logging
+from uuid import uuid4
 from typing import Dict, Union, Any
 from tableauserverclient import Server
 from vizportal.payload import PayloadBuilder
 
 CACHE_CONTROL: str = "no-cache"
 ACCEPT: str = "application/json, text/plain, */*"
-X_XSRF_TOKEN: str = ""
 CONTENT_TYPE: str = "application/json;charset=UTF-8"
 REQUEST_METHOD: str = "POST"
 
@@ -31,15 +31,16 @@ class VizPortalCall:
     def __init__(self, server: Server):
         # Assign the server object to the object's server attribute
         self.server: Server = server
+        self.x_xsrf_token: str = str(uuid4())
 
     def _make_common_headers(self) -> Dict[str, Any]:
         """Makes the common headers for the request"""
         headers: Dict[str, str] = {}
         headers["cache-control"] = CACHE_CONTROL
         headers["accept"] = ACCEPT
-        headers["x-xsrf-token"] = X_XSRF_TOKEN
+        headers["x-xsrf-token"] = self.x_xsrf_token
         headers["content-type"] = CONTENT_TYPE
-        headers["cookie"] = f"workgroup_session_id={self.server.auth_token}; XSRF-TOKEN="
+        headers["cookie"] = f"workgroup_session_id={self.server.auth_token}; XSRF-TOKEN={self.x_xsrf_token}"
         return headers
     
     def _payload_builder(self, payload: Union[PayloadBuilder, Dict[str, Any]]) -> Dict[str, Any]:
